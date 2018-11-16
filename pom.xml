@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>watchdog-spring-boot-starter</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Watchdog is an OAuth 2 provider for SpringBoot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
