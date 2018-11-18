@@ -59,6 +59,7 @@ public final class FieldUtil {
                             .getAuthorities()) : null, clientDetails.getAccessTokenValiditySeconds(),
                     clientDetails.getRefreshTokenValiditySeconds(), json, getAutoApproveScopes(clientDetails),
                     ((Application) clientDetails).getName(),
+                    ((Application) clientDetails).getRawClientSecret(),
                     clientDetails.getClientId() };
         }
         return new Object[] {

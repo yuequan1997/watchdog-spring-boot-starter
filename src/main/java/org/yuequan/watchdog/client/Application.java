@@ -1,5 +1,6 @@
 package org.yuequan.watchdog.client;
 
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import java.util.Set;
@@ -13,13 +14,23 @@ import java.util.UUID;
 public class Application extends BaseClientDetails implements ClientDetails {
 
     private String name;
-
+    @JsonProperty("raw_client_secret")
+    @com.fasterxml.jackson.annotation.JsonProperty("raw_client_secret")
+    private String rawClientSecret;
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRawClientSecret() {
+        return rawClientSecret;
+    }
+
+    public void setRawClientSecret(String rawClientSecret) {
+        this.rawClientSecret = rawClientSecret;
     }
 
     public Application() {
@@ -44,5 +55,6 @@ public class Application extends BaseClientDetails implements ClientDetails {
         setScope(scopes);
         setRegisteredRedirectUri(redirectUris);
         setClientSecret(UUID.randomUUID().toString());
+        setRawClientSecret(getClientSecret());
     }
 }

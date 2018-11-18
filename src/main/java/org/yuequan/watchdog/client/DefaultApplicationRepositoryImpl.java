@@ -42,7 +42,7 @@ public class DefaultApplicationRepositoryImpl implements ApplicationRepository<A
 
     private static final String CLIENT_FIELDS_FOR_UPDATE = "resource_ids, scope, "
             + "authorized_grant_types, web_server_redirect_uri, authorities, access_token_validity, "
-            + "refresh_token_validity, additional_information, autoapprove, name";
+            + "refresh_token_validity, additional_information, autoapprove, name, raw_client_secret";
 
     private static final String CLIENT_FIELDS = "client_secret, " + CLIENT_FIELDS_FOR_UPDATE;
 
@@ -54,7 +54,7 @@ public class DefaultApplicationRepositoryImpl implements ApplicationRepository<A
     private static final String DEFAULT_SELECT_STATEMENT = BASE_FIND_STATEMENT + " where client_id = ?";
 
     private static final String DEFAULT_INSERT_STATEMENT = "insert into oauth_client_details (" + CLIENT_FIELDS
-            + ", client_id) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+            + ", client_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     private static final String DEFAULT_UPDATE_STATEMENT = "update oauth_client_details " + "set "
             + CLIENT_FIELDS_FOR_UPDATE.replaceAll(", ", "=?, ") + "=? where client_id = ?";
@@ -166,7 +166,7 @@ public class DefaultApplicationRepositoryImpl implements ApplicationRepository<A
                 details.setAutoApproveScopes(StringUtils.commaDelimitedListToSet(scopes));
             }
             details.setName(rs.getString(12));
-
+            details.setRawClientSecret(rs.getString(13));
             return details;
         }
     }
