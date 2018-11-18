@@ -27,7 +27,7 @@ public class ApplicationService implements ClientDetailsService, ClientRegistrat
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         Optional<Application> application = applicationRepository.findByClientId(clientId);
-        if(application.isEmpty()){
+        if(application.isPresent()){
             throw new NoSuchClientException("No client with requested id: " + clientId);
         }
         return applicationRepository.findByClientId(clientId).get();
