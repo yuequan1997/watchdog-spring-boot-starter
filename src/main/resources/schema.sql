@@ -4,6 +4,7 @@ create table oauth_client_details (
   name VARCHAR(128),
   resource_ids VARCHAR(256),
   client_secret VARCHAR(256),
+  raw_client_secret VARCHAR(256),
   scope VARCHAR(256),
   authorized_grant_types VARCHAR(256),
   web_server_redirect_uri VARCHAR(256),
