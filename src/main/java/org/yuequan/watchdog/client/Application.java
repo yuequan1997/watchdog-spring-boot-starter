@@ -50,7 +50,7 @@ public class Application extends BaseClientDetails implements ClientDetails {
     }
 
     public Application(String clientId, String resourceIds, Set<String> scopes, Set<String> redirectUris, String name) {
-        super(clientId, resourceIds, "", "password,refresh_token", "CLIENT", "");
+        super(clientId, resourceIds, "", "password,refresh_token,client_credentials", "CLIENT", "");
         this.name = name;
         setScope(scopes);
         setRegisteredRedirectUri(redirectUris);
