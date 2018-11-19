@@ -61,12 +61,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Bean
     @ConditionalOnMissingBean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
     public ApplicationService applicationService(){
         return new ApplicationService();
     }
