@@ -1,5 +1,6 @@
 # ![logo](./logo-small.svg)watchdog-spring-boot-starter
 Watchdog is an OAuth 2 provider for SpringBoot
+
 该`starter`基于`spring-boot-starter-security`和`spring-security-oauth2`上做的改进封装，能够快速的搭建出一个可管理的`OAuth 2 provider`
 
 ![not recommended](./not-recommended.png)
