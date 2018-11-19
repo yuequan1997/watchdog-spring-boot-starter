@@ -61,8 +61,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
 			<scope>test</scope>
 		</dependency>
 
@@ -84,7 +84,8 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson2.version}</version>
 			<optional>true</optional>
-		</dependency>
+		</dependency><!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+
 	</dependencies>
 
 	<build>
