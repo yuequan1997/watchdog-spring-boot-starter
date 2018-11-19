@@ -14,9 +14,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,6 +62,7 @@ public class ApplicationEndpointTest {
         Assert.assertNotNull(clientId);
         Assert.assertNotNull(clientSecret);
         Assert.assertNotNull(scope);
+        //认证
         authtication(clientId ,clientSecret, scope);
     }
 
