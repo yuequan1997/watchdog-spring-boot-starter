@@ -55,7 +55,7 @@ public class ApplicationEndpoint {
     @PutMapping(value = {"${watchdog.application.prefix:}/applications/{clientId}"})
     public ClientDetails update(@PathVariable String clientId, @RequestBody ApplicationParam param){
         Optional<Application> application = applicationService.findByClientId(clientId);
-        if(application.isEmpty()){
+        if(!application.isPresent()){
             throw new NoSuchClientException("Not Found The Client.");
         }
         application.ifPresent(app -> {
