@@ -1,5 +1,6 @@
 package org.yuequan.watchdog.endpoint.support;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -44,6 +45,14 @@ public class ApplicationParam {
 
 
     public void populateDefault(){
+        if(getScope() == null){
+            setScope(new HashSet<>());
+        }
+
+        if(getRedirectUri() == null){
+            setRedirectUri(new HashSet<>());
+        }
+
         if(this.getRedirectUri().size() == 0){
             getRedirectUri().add(DEFAULT_REDIRECT_URL);
         }
