@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.yuequan</groupId>
             <artifactId>watchdog-spring-boot-starter</artifactId>
-            <version>0.6.0-SNAPSHOT</version>
+            <version>0.6.0</version>
         </dependency>
 
         <dependency>

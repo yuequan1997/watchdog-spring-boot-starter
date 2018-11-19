@@ -19,7 +19,7 @@ Watchdog is an OAuth 2 provider for SpringBoot
 <dependency>
     <groupId>org.yuequan</groupId>
     <artifactId>watchdog-spring-boot-starter</artifactId>
-    <version>0.5.0</version>
+    <version>0.6.0</version>
 </dependency>
 ```
 然后再启动类上配置`@EnableWatchdog`注解
