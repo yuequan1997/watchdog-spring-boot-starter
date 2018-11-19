@@ -8,6 +8,8 @@ Watchdog is an OAuth 2 provider for SpringBoot
 
 ## 如何使用
 
+> 工程下也有示例项目在`smaple`文件夹中
+
 执行项目根路径下面的`schema.sql`文件，创建所需的表，同时也欢迎大家来补充和扩展其它类型的数据库
 
 在`pom.xml`文件中引入依赖
