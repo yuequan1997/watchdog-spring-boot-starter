@@ -11,6 +11,11 @@ import java.util.Set;
 public class ApplicationParam {
     private String name;
     private Set<String> scope;
+
+    public final static String DEFAULT_REDIRECT_URL = "urn:ietf:wg:oauth:2.0:oob";
+
+    @org.codehaus.jackson.annotate.JsonProperty("redirect_uri")
+    @com.fasterxml.jackson.annotation.JsonProperty("redirect_uri")
     private Set<String> redirectUri;
 
     public String getName() {
@@ -37,4 +42,14 @@ public class ApplicationParam {
         this.scope = scope;
     }
 
+
+    public void populateDefault(){
+        if(this.getRedirectUri().size() == 0){
+            getRedirectUri().add(DEFAULT_REDIRECT_URL);
+        }
+
+        if(getScope().size() == 0){
+            getScope().add("DEFAULT");
+        }
+    }
 }
