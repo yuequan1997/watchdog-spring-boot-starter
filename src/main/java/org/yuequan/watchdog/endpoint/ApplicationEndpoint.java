@@ -26,8 +26,6 @@ public class ApplicationEndpoint {
     @Autowired
     private ApplicationService applicationService;
 
-    private final static String DEFAULT_REDIRECT_URL = "urn:ietf:wg:oauth:2.0:oob";
-
     @GetMapping(value = {"${watchdog.application.prefix:}/applications" , "${watchdog.application.prefix:}/applications/", "${watchdog.application.prefix:}/applications/index"})
     public List<Application> index(){
         return applicationService.findAll();
@@ -35,13 +33,7 @@ public class ApplicationEndpoint {
 
     @PostMapping(value = {"${watchdog.application.prefix:}/applications" , "${watchdog.application.prefix:}/applications/"})
     public ClientDetails create(@RequestBody ApplicationParam param){
-        if(param.getRedirectUri().size() == 0){
-            param.getRedirectUri().add(DEFAULT_REDIRECT_URL);
-        }
-
-        if(param.getScope().size() == 0){
-            param.getScope().add("DEFAULT");
-        }
+        param.populateDefault();
 
         Application application = new Application(
                 UUID.randomUUID().toString(),
@@ -67,6 +59,7 @@ public class ApplicationEndpoint {
             throw new NoSuchClientException("Not Found The Client.");
         }
         application.ifPresent(app -> {
+            param.populateDefault();
             if(!StringUtils.isEmpty(param.getName())){
                 app.setName(param.getName());
             }
@@ -87,4 +80,5 @@ public class ApplicationEndpoint {
     public void delete(@PathVariable String clientId){
         applicationService.removeClientDetails(clientId);
     }
+
 }
