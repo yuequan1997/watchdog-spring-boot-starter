@@ -71,3 +71,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 ![create](./watchdog-create.png)
 
 ![delete](./watchdog-delete.png)
+
+
+
+
+
+## WatchdogUrlRegistryProvider
+
+对`HttpSecurity`进行扩展是最常见不过的事情了，所以`Watchdog`提供了一种很优雅的方式去扩展，如下：
+
+```java
+@Component
+public class AuthorizationProvider implements WatchdogUrlRegistryProvider {
+
+    @Override
+    public boolean configure(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
+        config.............
+        return true;
+    }
+}
+```
+
