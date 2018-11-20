@@ -13,5 +13,5 @@ public interface WatchdogUrlRegistryProvider {
      * @param config
      * @return added result
      */
-    boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config);
+    boolean configure(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config);
 }

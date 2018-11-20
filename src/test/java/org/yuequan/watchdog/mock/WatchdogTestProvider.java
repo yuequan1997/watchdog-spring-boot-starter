@@ -13,7 +13,7 @@ import org.yuequan.watchdog.provider.WatchdogUrlRegistryProvider;
 public class WatchdogTestProvider implements WatchdogUrlRegistryProvider {
 
     @Override
-    public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
+    public boolean configure(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
         return true;
     }
 }

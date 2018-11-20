@@ -1,7 +1,6 @@
 package org.yuequan.watchdog.configuration;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -51,7 +50,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     private void registerWatchdogProvider(ExpressionUrlAuthorizationConfigurer.ExpressionInterceptUrlRegistry authorizeRequests) {
         Map<String, WatchdogUrlRegistryProvider> watchdogProviders = applicationContext.getBeansOfType(WatchdogUrlRegistryProvider.class);
         watchdogProviders.values().forEach(provider -> {
-            provider.config(authorizeRequests);
+            provider.configure(authorizeRequests);
         });
     }
 
