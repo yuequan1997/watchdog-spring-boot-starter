@@ -13,13 +13,13 @@ Watchdog is an OAuth 2 provider for SpringBoot
 
 执行项目根路径下面的`schema.sql`文件，创建所需的表，同时也欢迎大家来补充和扩展其它类型的数据库
 
-在`pom.xml`文件中引入依赖
+在`pom.xml`文件中引入依赖（由于刚推送到Maven Central有的仓库还没有同步可能还需要几个小时）
 
 ```
 <dependency>
     <groupId>org.yuequan</groupId>
     <artifactId>watchdog-spring-boot-starter</artifactId>
-    <version>0.6.0.BETA</version>
+    <version>0.7.0.BETA</version>
 </dependency>
 ```
 然后再启动类上配置`@EnableWatchdog`注解
