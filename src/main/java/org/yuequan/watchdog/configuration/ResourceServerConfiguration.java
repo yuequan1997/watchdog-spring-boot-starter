@@ -42,8 +42,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .permitAll()
                 .and()
                 .csrf()
-                .disable()
-                .authorizeRequests().anyRequest().authenticated();
+                .disable();
         registerWatchdogProvider(http.authorizeRequests());
     }
 
