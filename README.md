@@ -21,7 +21,7 @@ Watchdog is an OAuth 2 provider for SpringBoot
 <dependency>
     <groupId>org.yuequan</groupId>
     <artifactId>watchdog-spring-boot-starter</artifactId>
-    <version>0.7.0.BETA</version>
+    <version>0.8.1.BETA</version>
 </dependency>
 ```
 然后再启动类上配置`@EnableWatchdog`注解
@@ -73,3 +73,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 ![create](./watchdog-create.png)
 
 ![delete](./watchdog-delete.png)
+
+
+
+
+
+## WatchdogUrlRegistryProvider
+
+对`HttpSecurity`进行扩展是最常见不过的事情了，所以`Watchdog`提供了一种很优雅的方式去扩展，如下：
+
+```java
+@Component
+public class AuthorizationProvider implements WatchdogUrlRegistryProvider {
+
+    @Override
+    public boolean configure(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
+        config.............
+        return true;
+    }
+}
+```
+
