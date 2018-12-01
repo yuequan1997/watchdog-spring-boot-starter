@@ -11,6 +11,8 @@ Watchdog is an OAuth 2 provider for SpringBoot
 
 > 工程下也有示例项目在`smaple`文件夹中
 
+注意哟，`Watchdog`是从SpringBoot `2.1.0.RELEASE` 上开发的，建议使用新的版本，使用低的版本可能会带来配置上的不一致而产生问题哦
+
 执行项目根路径下面的`schema.sql`文件，创建所需的表，同时也欢迎大家来补充和扩展其它类型的数据库
 
 在`pom.xml`文件中引入依赖（由于刚推送到Maven Central有的仓库还没有同步可能还需要几个小时）
