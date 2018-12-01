@@ -1,6 +1,7 @@
 package org.yuequan.watchdog.configuration;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,6 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 import org.yuequan.watchdog.provider.WatchdogUrlRegistryProvider;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author yuequan
@@ -22,6 +24,9 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
     public static final String RESOURCE_NAME = "watchdog";
 
+    @Value("${watchdog.oauth2.protect.path:/api/**}")
+    private Set<String> apiPrefPath;
+
     private ApplicationContext applicationContext;
 
     @Override
@@ -31,15 +36,18 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        String[] needAuthenticationPaths = apiPrefPath.toArray(new String[apiPrefPath.size()]);
+        apiPrefPath.add("/applications");
+        apiPrefPath.add("/applications/**");
         http
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
-                .requestMatchers().anyRequest()
+                .requestMatchers().antMatchers(apiPrefPath.toArray(new String[apiPrefPath.size()]))
                 .and()
                 .authorizeRequests()
                 .antMatchers("/oauth/**", "/applications", "/applications/**")
-                .permitAll()
+                .permitAll().antMatchers(needAuthenticationPaths).authenticated()
                 .and()
                 .csrf()
                 .disable();
